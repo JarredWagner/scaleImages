@@ -1,0 +1,3 @@
+# scaleImages
+
+Intelligent Image Scaling
