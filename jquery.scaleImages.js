@@ -11,7 +11,7 @@
 
     //Set Scaling Options
     var settings = $.extend({
-      scaling: 1,
+      scaling: 100,
       max: 3000,
     }, options);
 
@@ -67,7 +67,7 @@
       }
 
       //Do a final scaling, if desired
-      if (settings.scaling !== 1 ) {
+      if (settings.scaling !== 100 ) {
 
         imageFinalWidth = Math.round(imageFinalWidth * (settings.scaling * 0.01));
         imageFinalHeight = Math.round(imageFinalHeight * (settings.scaling * 0.01));
