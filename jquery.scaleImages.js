@@ -11,6 +11,7 @@
 
     //Set Scaling Options
     var settings = $.extend({
+      lazy: false,
       scaling: 100,
       max: 3000,
     }, options);
@@ -19,8 +20,14 @@
     return this.each(function(){
 
       //Get Image Width and Height
-      imageWidth = $(this)[0].naturalWidth;
-      imageHeight = $(this)[0].naturalHeight;
+      if (settings.lazy == false) {
+        imageWidth = $(this)[0].naturalWidth;
+        imageHeight = $(this)[0].naturalHeight;
+      } else {
+        var imgBorder = (parseInt($(this).css('border-width')))*2;
+        imageWidth = $(this).attr('width') + imgBorder;
+        imageHeight = $(this).attr('height') + imgBorder;
+      }
 
       //Get Aspect Ratios
       var ratioLandscape = (imageWidth / imageHeight).toFixed(2);
@@ -86,9 +93,6 @@
         imageFinalWidth = settings.max * ratioLandscape;
 
       }
-
-      //Set CSS
-      $(this).css("width", "auto");
 
       //Set Image Width and Height
       $(this).attr("width", imageFinalWidth);
